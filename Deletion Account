@@ -42,21 +42,29 @@
             margin-bottom: 25px;
             font-size: 0.95em;
         }
-        .form-group {
-            margin-bottom: 20px;
+        .instructions {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #bce0ee;
         }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
         }
-        input[type="email"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 16px;
+        .step-number {
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
         }
         button {
             background-color: #e74c3c;
@@ -69,19 +77,13 @@
             font-weight: bold;
             width: 100%;
             transition: background-color 0.3s;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 25px;
         }
         button:hover {
             background-color: #c0392b;
-        }
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: #3498db;
-            text-decoration: none;
-        }
-        .back-link:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
@@ -93,32 +95,28 @@
             <strong>Warning:</strong> Deleting your account is a permanent action. All your personal data, biometric analysis records, and history will be permanently erased from our servers and cannot be recovered.
         </div>
 
-        <p>If you are sure you want to proceed with deleting your Bioelectrode AI account, please confirm your email address below.</p>
+        <p>To comply with data safety guidelines, you can request the complete deletion of your Bioelectrode AI account and all associated data.</p>
 
-        <!-- The form action would normally point to the PHP script handling the deletion -->
-        <form action="" method="POST">
-            <div class="form-group">
-                <label for="email">Registred Email Address</label>
-                <input type="email" id="email" name="email" required placeholder="Enter your email to confirm">
+        <div class="instructions">
+            <h3>How to Request Deletion</h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>Click the button below to draft an account deletion email.</div>
             </div>
-            
-            <button type="submit" name="delete_request">Permanently Delete My Account</button>
-        </form>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Ensure you are sending the email from the <strong>same address you used to register</strong> on the app.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Your data will be permanently wiped within 15-30 days of receiving your request.</div>
+            </div>
+        </div>
 
-        <a href="#" class="back-link">Return to App / Homepage</a>
+        <!-- The mailto link automatically opens the user's email client with the subject line predefined -->
+        <a href="mailto:support@bioelectrodeai.com?subject=Account%20Deletion%20Request&body=Hello%20Bioelectrode%20AI%20Support,%0D%0A%0D%0AI%20would%20like%20to%20request%20the%20permanent%20deletion%20of%20my%20account%20and%20all%20associated%20data.%0D%0A%0D%0AMy%20registered%20email%20address%20is:%20[Enter%20Email]%0D%0A%0D%0AThank%20you." style="text-decoration: none;">
+            <button type="button">Request Account Deletion via Email</button>
+        </a>
     </div>
-
-    <?php
-    // Basic PHP handling logic example (currently does nothing but show a message if submitted)
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_request'])) {
-        $email = htmlspecialchars($_POST['email']);
-        // Here you would typically connect to your database and execute the deletion, e.g.:
-        // 1. Verify email exists in DB
-        // 2. Delete user row from `users` table
-        // 3. Delete associated data in other tables
-        
-        echo "<script>alert('Account deletion request received for " . $email . ". Your data will be removed within 30 days.');</script>";
-    }
-    ?>
 </body>
 </html>
