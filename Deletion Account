@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Account - Bioelectrode AI</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f6f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            width: 100%;
+        }
+        h1 {
+            color: #e74c3c;
+            margin-top: 0;
+            text-align: center;
+        }
+        p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .warning {
+            background-color: #fadbd8;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            font-size: 0.95em;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #c0392b;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Account Request</h1>
+        
+        <div class="warning">
+            <strong>Warning:</strong> Deleting your account is a permanent action. All your personal data, biometric analysis records, and history will be permanently erased from our servers and cannot be recovered.
+        </div>
+
+        <p>If you are sure you want to proceed with deleting your Bioelectrode AI account, please confirm your email address below.</p>
+
+        <!-- The form action would normally point to the PHP script handling the deletion -->
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="email">Registred Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email to confirm">
+            </div>
+            
+            <button type="submit" name="delete_request">Permanently Delete My Account</button>
+        </form>
+
+        <a href="#" class="back-link">Return to App / Homepage</a>
+    </div>
+
+    <?php
+    // Basic PHP handling logic example (currently does nothing but show a message if submitted)
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_request'])) {
+        $email = htmlspecialchars($_POST['email']);
+        // Here you would typically connect to your database and execute the deletion, e.g.:
+        // 1. Verify email exists in DB
+        // 2. Delete user row from `users` table
+        // 3. Delete associated data in other tables
+        
+        echo "<script>alert('Account deletion request received for " . $email . ". Your data will be removed within 30 days.');</script>";
+    }
+    ?>
+</body>
+</html>
